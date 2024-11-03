@@ -51,27 +51,28 @@ void loop() {
     initfResult(fResult);
     fRes = ml.predict(input1, fResult);
     Serial.print("\nThe output value returned for input1 is:\n");
-    Serial.println(fRes);
+    // Serial.println(fRes);
     displayOutput(fResult);  
 
     initfResult(fResult);
     fRes = ml.predict(input2, fResult);
     Serial.print("\nThe output value returned for input2 is:\n");
-    Serial.println(fRes);
+    // Serial.println(fRes);
     displayOutput(fResult);      
     Serial.println();
 
     initfResult(fResult);
     fRes = ml.predict(input3, fResult);
     Serial.print("\nThe output value returned for input3 is:\n");
-    Serial.println(fRes);
+    // Serial.println(fRes);
     displayOutput(fResult);    
   
     initfResult(fResult);
     fRes = ml.predict(input4, fResult);
-    Serial.print("\nThe output value returned for input4 is:\n\n\n");
-    Serial.println(fRes);
-    displayOutput(fResult);  
+    Serial.print("\nThe output value returned for input4 is:\n");
+    // Serial.println(fRes);
+    displayOutput(fResult); 
+    Serial.print("\n\n\n");
 
     delay(5000); // 5 seconds of delay between two plots
 }
