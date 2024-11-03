@@ -34,8 +34,8 @@
 // Line no.    1: vhigh vhigh 2 2 small low unacc   : Input3
 // Line no. 1134: med med 3 more  big high  vgood   : Input4
 
-#define NUMBER_OF_INPUTS 21  
-#define NUMBER_OF_OUTPUTS 4 
+#define NUMBER_OF_INPUTS 94  
+#define NUMBER_OF_OUTPUTS 2 
 // in future projects you may need to tweek this value: it's a trial and error process
 //#define TENSOR_ARENA_SIZE 3*1024  // Since the size is 2960 here, this needs to be 
 // changed from 2*1024 to 3*1024
@@ -47,7 +47,7 @@ Eloquent::TinyML::TfLite<NUMBER_OF_INPUTS, NUMBER_OF_OUTPUTS, TENSOR_ARENA_SIZE>
 void setup() {
     Serial.begin(115200);
    
-    ml.begin(cars_model_esp32);
+    ml.begin(salary_model_esp32);
 }
 
 float fResult[NUMBER_OF_OUTPUTS] = {0};
@@ -57,46 +57,27 @@ void loop() {
 
 //['price', 'maint', 'doors', 'persons', 'lug_capacity', 'safety']
 // Line no. 1226: med low 3 4  small med acc        : Input1
-    float input1[] = {0.0f, 0.0f, 1.0f, 0.0f,
-                      0.0f, 1.0f, 0.0f, 0.0f, 
-                      0.0f, 1.0f, 0.0f, 0.0f, 
-                      0.0f, 1.0f, 0.0f,
-                      0.0f, 0.0f, 1.0f,
-                      0.0f, 0.0f, 1.0f};
-// Expected output1: 1.0f, 0.0, 0.0f, 0.0f
+    float input1[] = {0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.232876710f, 0.397959180f}
+
+// Expected output1: 1.0f, 0.0f
 
 //['price', 'maint', 'doors', 'persons', 'lug_capacity', 'safety']
 // Line no. 1236: med  low 3 more  small high       : Input2
-    float input2[] = {0.0f, 0.0f, 1.0f, 0.0f, 
-                      0.0f, 1.0f, 0.0f, 0.0f,
-                      0.0f, 1.0f, 0.0f, 0.0f, 
-                      0.0f, 0.0f, 1.0f,
-                      0.0f, 0.0f, 1.0f,
-                      1.0f, 0.0f, 0.0f};
-// Expected output2: 0.0f, 1.0, 0.0f, 0.0f
+    float input2[] = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.260273970f, 0.193877550f};
+// Expected output2: 1.0f, 0.0f
 
 //['price', 'maint', 'doors', 'persons', 'lug_capacity', 'safety']
 // Line no.    1: vhigh vhigh 2 2 small low unacc   : Input3
-    float input3[] = {0.0f, 0.0f, 0.0f, 1.0f,
-                      0.0f, 0.0f, 0.0f, 1.0f,
-                      1.0f, 0.0f, 0.0f, 0.0f, 
-                      1.0f, 0.0f, 0.0f,
-                      0.0f, 0.0f, 1.0f,
-                      0.0f, 1.0f, 0.0f};
-// Expected output3: 0.0f, 0.0, 1.0f, 0.0f
+    float input3[] = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.575342470f, 0.244897960f};
+// Expected output3: 1.0f, 0.0f
 
 // Earlier tried 1131 which should have been vgood, but it gave 0.48 for 
 // acc and vgood, the difference between 1131 and 1134 is in lug_capacity
 // which is med in 1131 whereas it big in 1134, so the result for 1134 was correct
 //['price', 'maint', 'doors', 'persons', 'lug_capacity', 'safety']
 // Line no. 1134: med med 3 more  big high  vgood   : Input4
-    float input4[] = {0.0f, 0.0f, 1.0f, 0.0f, 
-                      0.0f, 0.0f, 1.0f, 0.0f, 
-                      0.0f, 1.0f, 0.0f, 0.0f, 
-                      0.0f, 0.0f, 1.0f,
-                      1.0f, 0.0f, 0.0f,
-                      1.0f, 0.0f, 0.0f};
-// Expected output4: 0.0f, 0.0, 0.0f, 1.0f
+    float input4[] = {0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.575342470f, 0.357142860f};
+// Expected output4: 0.0f, 1.0f
 
     initfResult(fResult);
     fRes = ml.predict(input1, fResult);
